@@ -1,20 +1,26 @@
 import "../styles/App.scss";
-import adalabers from "../data/promo-patata.json";
-import { /*useEffect, */ useState } from "react";
-//import callToApi from "../services/api";
-//import localStorage from '../services/localstorage';
+//import adalabers from "../data/promo-patata.json";
+import { useEffect, useState } from "react";
+import callToApi from "../services/api";
 
 function App() {
   //variables
-  const [data, setData] = useState(adalabers);
+  const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [newAdalaber, setNewAdalaber] = useState({
     name: "",
     counselor: "",
     speciality: "",
   });
+
+  // Traer datos desde la API
+  useEffect(() => {
+    callToApi().then((AdalaberData) => {
+      setData(AdalaberData);
+    });
+  }, []);
+
   //Filtrar y pintar adalabers
-  console.log(data);
   const htmlAdalaber = data
     .filter((searchAdalaber) =>
       searchAdalaber.name
@@ -36,10 +42,12 @@ function App() {
       [ev.currentTarget.id]: ev.currentTarget.value,
     });
   };
+
   //Recoger valor de la búsqueda
   const handleSearchInput = (ev) => {
     setSearch(ev.currentTarget.value);
   };
+
   // Submit formulario y lavado
   const handleNewAdalaberClick = (ev) => {
     ev.preventDefault();
@@ -50,13 +58,6 @@ function App() {
       speciality: "",
     });
   };
-
-  // api
-  /*useEffect(() => {
-    callToApi().then((response) => {
-      data(response);
-    });
-  }, []);*/
 
   return (
     // HTML
