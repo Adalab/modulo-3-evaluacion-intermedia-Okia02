@@ -1,0 +1,165 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.body {
+  background-color: snow;
+}
+
+.header {
+  background-color: steelblue;
+  padding: 20px;
+  text-align: center;
+  color: snow;
+  font-family: Verdana, Tahoma, sans-serif;
+  &__title {
+    text-shadow: rgb(73, 49, 94) 3px 3px;
+    font-size: 30px;
+    padding-bottom: 20px;
+  }
+  .searchForm {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    .header__search {
+      margin-bottom: 1%;
+    }
+  }
+}
+.table {
+  text-align: center;
+  margin: 2% auto;
+  font-family: Verdana, Tahoma, sans-serif;
+  width: 100%;
+  .tableTitle {
+    padding: 2% 2%;
+    font-size: 20px;
+    color: steelblue;
+    font-weight: 600;
+  }
+  .listElement {
+    padding-bottom: 7px;
+    border-bottom: rgb(212, 222, 230) 2px solid;
+    border-right: rgb(212, 222, 230) 2px solid;
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+.new-adalaber__form {
+  padding: 2% 2%;
+  font-size: 20px;
+  color: steelblue;
+  font-weight: 600;
+  font-family: Verdana, Tahoma, sans-serif;
+  .new-adalaber__title {
+    margin-bottom: 2%;
+  }
+  .new-adalaber__input {
+    margin-right: 15px;
+    border: rgb(73, 49, 94) solid 3px;
+  }
+}

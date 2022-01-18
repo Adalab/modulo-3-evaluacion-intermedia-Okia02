@@ -32,10 +32,10 @@ function App() {
       return selectCounselor.counselor.toLowerCase().includes(select);
     })
     .map((eachAdalaber, index) => (
-      <tr key={index}>
-        <td>{eachAdalaber.name}</td>
-        <td>{eachAdalaber.counselor}</td>
-        <td>{eachAdalaber.speciality}</td>
+      <tr className="lines" key={index}>
+        <td className="listElement">{eachAdalaber.name}</td>
+        <td className="listElement">{eachAdalaber.counselor}</td>
+        <td className="listElement">{eachAdalaber.speciality}</td>
       </tr>
     ));
 
@@ -71,7 +71,7 @@ function App() {
     <div className="app">
       <header className="header">
         <h1 className="header__title">Adalabers</h1>
-        <form>
+        <form className="searchForm">
           <input
             className="header__search"
             autoComplete="off"
@@ -94,19 +94,19 @@ function App() {
         </form>
       </header>
       <main>
-        <table>
+        <table className="table">
           <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Tutora</th>
-              <th>Especialidad</th>
+            <tr className="tableTitle">
+              <th className="tableHeader__name">Nombre</th>
+              <th className="tableHeader__counselor">Tutora</th>
+              <th className="tableHeader__speciality">Especialidad</th>
             </tr>
           </thead>
           <tbody className="adalaber-info">{htmlAdalaber}</tbody>
         </table>
         <form className="new-adalaber__form">
           <h2 className="new-adalaber__title">Añadir una adalaber</h2>
-          <label>
+         
             <input
               className="new-adalaber__input"
               type="text"
@@ -116,19 +116,18 @@ function App() {
               value={newAdalaber.name}
               onChange={handleNewAdalaber}
             />
-          </label>
-          <label>
+          
+         
             <input
               className="new-adalaber__input"
               type="text"
               name="counselor"
               id="counselor"
-              placeholder="counselora"
+              placeholder="Tutora"
               value={newAdalaber.counselor}
               onChange={handleNewAdalaber}
             />
-          </label>
-          <label>
+        
             <input
               className="new-adalaber__input"
               type="text"
@@ -138,7 +137,7 @@ function App() {
               value={newAdalaber.speciality}
               onChange={handleNewAdalaber}
             />
-          </label>
+         
           <input
             className="new-adalaber__btn"
             type="submit"
