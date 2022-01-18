@@ -1,12 +1,13 @@
 import "../styles/App.scss";
 //import adalabers from "../data/promo-patata.json";
 import { useEffect, useState } from "react";
-import callToApi from "../services/api";
+import getAdalabers from "../services/api";
 
 function App() {
   //variables
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [select, setSelect] = useState("");
   const [newAdalaber, setNewAdalaber] = useState({
     name: "",
     counselor: "",
@@ -15,7 +16,7 @@ function App() {
 
   // Traer datos desde la API
   useEffect(() => {
-    callToApi().then((AdalaberData) => {
+    getAdalabers().then((AdalaberData) => {
       setData(AdalaberData);
     });
   }, []);
@@ -27,6 +28,9 @@ function App() {
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase())
     )
+    .filter((selectCounselor) => {
+      return selectCounselor.counselor.toLowerCase().includes(select);
+    })
     .map((eachAdalaber, index) => (
       <tr key={index}>
         <td>{eachAdalaber.name}</td>
@@ -47,6 +51,10 @@ function App() {
   const handleSearchInput = (ev) => {
     setSearch(ev.currentTarget.value);
   };
+  //Recoger valor de select
+  const handleSelectInput = (ev) => {
+    setSelect(ev.currentTarget.value);
+  };
 
   // Submit formulario y lavado
   const handleNewAdalaberClick = (ev) => {
@@ -60,8 +68,6 @@ function App() {
   };
 
   return (
-    // HTML
-
     <div className="app">
       <header className="header">
         <h1 className="header__title">Adalabers</h1>
@@ -75,10 +81,16 @@ function App() {
             value={search}
             onChange={handleSearchInput}
           />
-          {/*<select onChange={handleSelectInput} className='search__select'>
-            <option value='all'>Cualquiera</option>
-            <option value={}>{nombre adalabers}</option>
-          </select>*/}
+          <select
+            onChange={handleSelectInput}
+            className="search__select"
+            value={select}
+          >
+            <option value="">Cualquiera</option>
+            <option value="iván">Iván</option>
+            <option value="yanelis">Yanelis</option>
+            <option value="dayana">Dayana</option>
+          </select>
         </form>
       </header>
       <main>
@@ -127,39 +139,6 @@ function App() {
               onChange={handleNewAdalaber}
             />
           </label>
-          {/*<label htmlFor="github" className="form__label">
-            GitHub
-          <input
-            type="text"
-            placeholder="URL"
-            name="github"
-            id="github"
-            className="new-adalaber__input"
-            value={newAdalaber.github}
-            onChange={handleNewAdalaber}
-          /></label>
-          <label htmlFor="linkedin" className="form__label">
-            Linkedin
-          <input
-            type="text"
-            placeholder="URL"
-            name="linkedin"
-            id="linkedin"
-            className="new-adalaber__input"
-            value={newAdalaber.linkedin}
-            onChange={handleNewAdalaber}
-          /></label>
-          <label htmlFor="github" className="form__label">
-            Twitter
-          <input
-            type="text"
-            placeholder="URL"
-            name="twitter"
-            id="twitter"
-            className="new-adalaber__input"
-            value={newAdalaber.twitter}
-            onChange={handleNewAdalaber}
-          /></label>*/}
           <input
             className="new-adalaber__btn"
             type="submit"
