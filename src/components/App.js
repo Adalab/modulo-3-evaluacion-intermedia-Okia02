@@ -2,7 +2,6 @@ import "../styles/App.scss";
 //import adalabers from "../data/promo-patata.json";
 import { useEffect, useState } from "react";
 import getAdalabers from "../services/api";
-
 function App() {
   //variables
   const [data, setData] = useState([]);
@@ -13,14 +12,12 @@ function App() {
     counselor: "",
     speciality: "",
   });
-
   // Traer datos desde la API
   useEffect(() => {
     getAdalabers().then((AdalaberData) => {
       setData(AdalaberData);
     });
   }, []);
-
   //Filtrar y pintar adalabers
   const htmlAdalaber = data
     .filter((searchAdalaber) =>
@@ -38,7 +35,6 @@ function App() {
         <td className="listElement">{eachAdalaber.speciality}</td>
       </tr>
     ));
-
   //Añadir adalaber
   const handleNewAdalaber = (ev) => {
     setNewAdalaber({
@@ -46,7 +42,6 @@ function App() {
       [ev.currentTarget.id]: ev.currentTarget.value,
     });
   };
-
   //Recoger valor de la búsqueda
   const handleSearchInput = (ev) => {
     setSearch(ev.currentTarget.value);
@@ -55,7 +50,6 @@ function App() {
   const handleSelectInput = (ev) => {
     setSelect(ev.currentTarget.value);
   };
-
   // Submit formulario y lavado
   const handleNewAdalaberClick = (ev) => {
     ev.preventDefault();
@@ -66,7 +60,6 @@ function App() {
       speciality: "",
     });
   };
-
   return (
     <div className="app">
       <header className="header">
@@ -106,38 +99,33 @@ function App() {
         </table>
         <form className="new-adalaber__form">
           <h2 className="new-adalaber__title">Añadir una adalaber</h2>
-         
-            <input
-              className="new-adalaber__input"
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Nombre"
-              value={newAdalaber.name}
-              onChange={handleNewAdalaber}
-            />
-          
-         
-            <input
-              className="new-adalaber__input"
-              type="text"
-              name="counselor"
-              id="counselor"
-              placeholder="Tutora"
-              value={newAdalaber.counselor}
-              onChange={handleNewAdalaber}
-            />
-        
-            <input
-              className="new-adalaber__input"
-              type="text"
-              name="speciality"
-              id="speciality"
-              placeholder="Python, React, IA..."
-              value={newAdalaber.speciality}
-              onChange={handleNewAdalaber}
-            />
-         
+          <input
+            className="new-adalaber__input"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Nombre"
+            value={newAdalaber.name}
+            onChange={handleNewAdalaber}
+          />
+          <input
+            className="new-adalaber__input"
+            type="text"
+            name="counselor"
+            id="counselor"
+            placeholder="Tutora"
+            value={newAdalaber.counselor}
+            onChange={handleNewAdalaber}
+          />
+          <input
+            className="new-adalaber__input"
+            type="text"
+            name="speciality"
+            id="speciality"
+            placeholder="Python, React, IA..."
+            value={newAdalaber.speciality}
+            onChange={handleNewAdalaber}
+          />
           <input
             className="new-adalaber__btn"
             type="submit"

@@ -3,7 +3,6 @@
 *:after {
   box-sizing: border-box;
 }
-
 html,
 body,
 div,
@@ -65,7 +64,6 @@ video {
   -webkit-font-smoothing: antialiased;
   text-size-adjust: none;
 }
-
 footer,
 header,
 nav,
@@ -73,21 +71,17 @@ section,
 main {
   display: block;
 }
-
 body {
   line-height: 1;
 }
-
 ol,
 ul {
   list-style: none;
 }
-
 blockquote,
 q {
   quotes: none;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -95,7 +89,6 @@ q:after {
   content: "";
   content: none;
 }
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -108,7 +101,6 @@ input {
 .body {
   background-color: snow;
 }
-
 .header {
   background-color: steelblue;
   padding: 20px;
