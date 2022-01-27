@@ -1,5 +1,4 @@
 import "../styles/App.scss";
-//import adalabers from "../data/promo-patata.json";
 import { useEffect, useState } from "react";
 import getAdalabers from "../services/api";
 function App() {
