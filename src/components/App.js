@@ -18,22 +18,41 @@ function App() {
     });
   }, []);
   //Filtrar y pintar adalabers
-  const htmlAdalaber = data
-    .filter((searchAdalaber) =>
-      searchAdalaber.name
-        .toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase())
-    )
-    .filter((selectCounselor) => {
-      return selectCounselor.counselor.toLowerCase().includes(select);
-    })
-    .map((eachAdalaber, index) => (
-      <tr className="lines" key={index}>
-        <td className="listElement">{eachAdalaber.name}</td>
-        <td className="listElement">{eachAdalaber.counselor}</td>
-        <td className="listElement">{eachAdalaber.speciality}</td>
-      </tr>
-    ));
+  const htmlAdalaber = () => {
+    console.log(data);
+    return data
+      .filter((searchAdalaber) => {
+        return searchAdalaber.name.toLowerCase().includes(search.toLowerCase());
+      })
+      .filter((selectCounselor) => {
+        return selectCounselor.counselor.toLowerCase().includes(select);
+      })
+      .map((eachAdalaber, index) => {
+        return eachAdalaber.id !== undefined ? (
+          <tr key={index}>
+            <td className="listElement">{eachAdalaber.name}</td>
+            <td className="listElement">{eachAdalaber.counselor}</td>
+            <td className="listElement">{eachAdalaber.speciality}</td>
+          </tr>
+        ) : (
+          <tr key={eachAdalaber.id}>
+            <td className="listElement">{eachAdalaber.name}</td>
+            <td className="listElement">{eachAdalaber.counselor}</td>
+            <td className="listElement">{eachAdalaber.speciality}</td>
+            <td className="listElement">
+              {eachAdalaber.social_networks.map((social, index) => {
+                return (
+                  <a key={index} href={`${social.url}`}>
+                    {" "}
+                    {social.name}{" "}
+                  </a>
+                );
+              })}
+            </td>
+          </tr>
+        );
+      });
+  };
   //Añadir adalaber
   const handleNewAdalaber = (ev) => {
     setNewAdalaber({
@@ -92,9 +111,10 @@ function App() {
               <th className="tableHeader__name">Nombre</th>
               <th className="tableHeader__counselor">Tutora</th>
               <th className="tableHeader__speciality">Especialidad</th>
+              <th className="tableHeader__speciality">Redes sociales</th>
             </tr>
           </thead>
-          <tbody className="adalaber-info">{htmlAdalaber}</tbody>
+          <tbody className="adalaber-info">{htmlAdalaber()}</tbody>
         </table>
         <form className="new-adalaber__form">
           <h2 className="new-adalaber__title">Añadir una adalaber</h2>
